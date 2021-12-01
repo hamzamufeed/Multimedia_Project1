@@ -5,8 +5,8 @@ import {MainComponent} from "./main/main.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  { path: '/welcome', component: HomeComponent },
-  { path: '/main', component: MainComponent },
+  { path: 'welcome', component: HomeComponent },
+  { path: 'main', component: MainComponent },
 ];
 
 @NgModule({
