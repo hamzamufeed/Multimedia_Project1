@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule
