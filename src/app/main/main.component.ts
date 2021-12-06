@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  src !: string;
   constructor() { }
 
   ngOnInit(): void {
+    this.src = "http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd";
   }
 
 }
