@@ -6,7 +6,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
-  src : string = "http://dash.edgesuite.net/envivio/EnvivioDash3/manifest.mpd";
+  src : string = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
 
   constructor() {}
 
