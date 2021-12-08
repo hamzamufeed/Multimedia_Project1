@@ -1,12 +1,16 @@
 import {NgModule} from "@angular/core";
 import {NoPreloading, PreloadAllModules, RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./home/home.component";
-import {MainComponent} from "./main/main.component";
+import {MainComponent} from "./home/main/main.component";
+import {StartComponent} from "./home/start/start.component";
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-  { path: 'welcome', component: HomeComponent },
-  { path: 'main/:id', component: MainComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, children: [
+      { path: '', component: StartComponent},
+      { path: ':id', component: MainComponent}
+    ]
+  }
 ];
 
 @NgModule({

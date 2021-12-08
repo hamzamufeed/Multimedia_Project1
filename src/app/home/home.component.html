@@ -1,16 +1,13 @@
-<h4>Welcome to the Home Page</h4>
-<br>
-<h5>Choose a Video:</h5>
-<div>
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item" routerLinkActive="active">
-      <button class="btn btn-primary" [routerLink]="['/main', 0]">Video 1</button>
-    </li><br>
-    <li class="nav-item" routerLinkActive="active">
-      <button class="btn btn-primary" routerLink="/main" [routerLink]="['/main', 1]">Video 2</button>
-    </li><br>
-    <li class="nav-item" routerLinkActive="active">
-      <button class="btn btn-primary" [routerLink]="['/main', 2]">Video 3</button>
-    </li><br>
-  </ul>
+<div class="row">
+  <div class="col-md-3">
+    <br>
+    <br>
+    <h4>Choose a Video:</h4>
+    <div>
+      <app-list></app-list>
+    </div>
+  </div>
+  <div class="col-md-7"><br><br>
+    <router-outlet></router-outlet>
+  </div>
 </div>
