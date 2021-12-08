@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import {AppRoutingModule} from "./app-routing.module";
+import {DropdownDirective} from "./dropdown.directive";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {AppRoutingModule} from "./app-routing.module";
     HeaderComponent,
     HomeComponent,
     MainComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

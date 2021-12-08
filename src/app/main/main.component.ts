@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -6,9 +7,16 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
-  src : string = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
+  // src : string = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
+  src !: string;
+  id!: number;
+  links : string[] = [
+    'No Time To Die/my_video_manifest.mpd',
+    'Horizon/my_video_manifest.mpd',
+    'La Casa De Papel/my_video_manifest.mpd'
+  ];
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router,) {}
 
   ngOnInit(): void {
     const tag = document.createElement('script');
@@ -19,6 +27,15 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     if (firstScriptTag && firstScriptTag.parentNode) {
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     }
+
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.src = this.links[this.id];
+          console.log(params['id']);
+        }
+      );
   }
 
   ngAfterViewInit(): void {
