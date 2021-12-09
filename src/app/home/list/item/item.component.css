@@ -1,0 +1,11 @@
+a:hover {
+  color: #006fff;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  background-color: transparent;
+  text-decoration: underline;
+  color: antiquewhite;
+}

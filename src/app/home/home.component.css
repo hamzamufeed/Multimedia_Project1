@@ -1,0 +1,7 @@
+.con{
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  align-content: flex-start;
+  padding-left: 0px;
+}

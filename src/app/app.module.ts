@@ -11,6 +11,7 @@ import {DropdownDirective} from "./dropdown.directive";
 import { StartComponent } from './home/start/start.component';
 import { ListComponent } from './home/list/list.component';
 import { ItemComponent } from './home/list/item/item.component';
+import {HomeVideosService} from "./home/home.videos.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ItemComponent } from './home/list/item/item.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [{provide : LocationStrategy , useClass: HashLocationStrategy}],
+  providers: [HomeVideosService, {provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
