@@ -2,6 +2,7 @@
   <div class="col-xs-2">
     <app-item *ngFor="let item of videos; let i = index"
               [name]="item"
+              [src]="images[i]"
               [index]="i"></app-item>
   </div>
 </div>
