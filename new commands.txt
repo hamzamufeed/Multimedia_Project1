@@ -1,0 +1,32 @@
+ffprobe video.mp4
+
+
+ffmpeg -y -i video.mp4 
+ -an -crf 21 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=1920:1080 -b:v 5000k "q_1080_h.mp4" 
+ -an -crf 25 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=1920:1080 -b:v 3000k "q_1080.mp4" \
+ -an -crf 21 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=1280:720 -b:v 2000k "q_720_h.mp4" \
+ -an -crf 25 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=1280:720 -b:v 1000k "q_720.mp4" \
+ -an -crf 21 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=640:360 -b:v 750k "q_360_h.mp4" \
+ -an -crf 25 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=640:360 -b:v 350k "q_360.mp4" \
+ -vn -c:a aac -b:a 128k -ar 48000 "audio.m4a"
+ 
+
+ffmpeg \
+  -i q_1080.mp4 \
+  -i q_720.mp4 \
+  -i q_360.mp4 \
+  -i audio.m4a \
+  -c copy -dash 2000 \
+  -map 0 -map 1 -map 2 -map 3 \
+  -adaptation_sets "id=0,streams=0,1,2 id=1,streams=3" \
+  dash/video-manifest.mpd
+  
+  
+  ffmpeg -y -i video.mp4 \
+ -an -crf 20 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='1080p 5000k crf=24':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=1920:1080 -b:v 5000k "q_1080_h.mp4" \
+ -an -crf 23 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='1080p 3000k crf=27':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=1920:1080 -b:v 3000k "q_1080.mp4" \
+ -an -crf 20 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='720p 2000k crf=24':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=1280:720 -b:v 2000k "q_720_h.mp4" \
+ -an -crf 23 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='720p 1000k crf=27':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=1280:720 -b:v 1000k "q_720.mp4" \
+ -an -crf 20 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='360p 750k crf=24':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=640:360 -b:v 750k "q_360_h.mp4" \
+ -an -crf 23 -c:v libx264 -x264opts keyint=90:min-keyint=90:no-scenecut -vf drawtext=fontfile:text='360p 350k crf=27':fontcolor=white:fontsize=72:box=1:boxcolor=black:boxborderw=5:x=20:y=20,scale=640:360 -b:v 350k "q360.mp4" \
+ -vn -c:a aac -b:a 128k -ar 48000 "audio.m4a"
