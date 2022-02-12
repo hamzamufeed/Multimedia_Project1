@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  multimedia-project-app:
+    container_name: multimedia-project
+    image: hamzamufeed/multimedia-project:latest
+    mem_limit: 700m
+    ports:
+      - "8010:80"
+    networks:
+      - multimedia-project
+
+
+networks:
+  multimedia-project:
