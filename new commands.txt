@@ -1,5 +1,6 @@
 ffprobe video.mp4
 
+docker run -dit --name encs5398-ns1170075 -p 8010:80 -v /home/ns1170075/website/:/usr/local/apache2/htdocs/ httpd:2.4
 
 ffmpeg -y -i video.mp4 
  -an -crf 21 -c:v libx264 -x264opts keyint=90:min-keyint=48:no-scenecut -vf scale=1920:1080 -b:v 5000k "q_1080_h.mp4" 
